@@ -1,6 +1,6 @@
 # Wispr Flow Clone
 
-A functional desktop clone of [Wispr Flow](https://wisprflow.ai)'s push-to-talk voice transcription app. Records from your microphone and transcribes using Deepgram's API.
+A functional desktop clone of  [Wispr Flow](https://wisprflow.ai)'s push-to-talk voice transcription app. Records from your microphone and transcribes using Deepgram's API.
 
 ## ✨ Features
 
@@ -30,6 +30,7 @@ A functional desktop clone of [Wispr Flow](https://wisprflow.ai)'s push-to-talk 
 ## 🚀 Quick Start
 
 ### Prerequisites
+- C++ Build tools
 - Node.js 18+
 - Rust (for Tauri)
 - [Deepgram account](https://console.deepgram.com) with API key
