@@ -1,50 +1,32 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import { invoke } from "@tauri-apps/api/core";
+// src/App.tsx
 import "./App.css";
+import { RecorderButton } from "./components/RecorderButton";
+import { useRecorder } from "./hooks/useRecorder";
 
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
-  }
+  const { isRecording, toggleRecording } = useRecorder();
 
   return (
-    <main className="container">
-      <h1>Welcome to Tauri + React</h1>
+    <div
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        flexDirection: "column",
+        gap: "16px",
+        fontFamily: "system-ui, -apple-system, BlinkMacSystemFont, sans-serif",
+      }}
+    >
+      <h1>Wispr Flow Clone</h1>
+      <p style={{ color: "#555" }}>Phase 2: Push-to-talk UI (no audio yet)</p>
 
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
+      <RecorderButton isRecording={isRecording} onToggle={toggleRecording} />
 
-      <form
-        className="row"
-        onSubmit={(e) => {
-          e.preventDefault();
-          greet();
-        }}
-      >
-        <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
-        />
-        <button type="submit">Greet</button>
-      </form>
-      <p>{greetMsg}</p>
-    </main>
+      <p style={{ fontSize: "14px", color: "#777" }}>
+        Recording state: <strong>{isRecording ? "ON" : "OFF"}</strong>
+      </p>
+    </div>
   );
 }
 
