@@ -5,7 +5,7 @@ import { TranscriptionDisplay } from "./components/TranscriptionDisplay";
 import { useRecorder } from "./hooks/useRecorder";
 
 function App() {
-  const { isRecording, transcript, toggleRecording } = useRecorder();
+  const { isRecording, transcript, toggleRecording, permissionError  } = useRecorder();
 
   return (
     <div
@@ -22,8 +22,12 @@ function App() {
     >
       <h1>Wispr Flow Clone</h1>
       <p style={{ color: "#555", marginBottom: "8px" }}>
-        Phase 2: Push-to-talk + transcript area (mock transcription)
+        Phase 3: Push-to-talk + real mic + Deepgram
       </p>
+
+      {permissionError && (
+        <p style={{ color: "red", fontSize: "14px" }}>{permissionError}</p>
+      )}
 
       <RecorderButton isRecording={isRecording} onToggle={toggleRecording} />
 
