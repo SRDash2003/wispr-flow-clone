@@ -54,25 +54,17 @@ export function TranscriptionDisplay({
       </div>
 
       {/* Copy icon button – top right, only when transcript exists */}
-      {hasTranscript && (
-        <button
-          onClick={handleCopy}
-          disabled={!canCopy}
-          aria-label="Copy transcript"
-          style={{
-            position: "absolute",
-            top: "10px",
-            right: "10px",
-            border: "none",
-            background: "transparent",
-            cursor: canCopy ? "pointer" : "not-allowed",
-            opacity: canCopy ? 0.8 : 0.3,
-            padding: 0,
-          }}
-        >
-          <span style={{ fontSize: "16px" }}>📋</span>
-        </button>
-      )}
+       {hasTranscript && (
+       <button 
+         className={`copy-button ${canCopy ? '' : 'copy-button--disabled'}`}
+         onClick={handleCopy}
+         disabled={!canCopy}
+         aria-label="Copy transcript"
+       >
+      <span>📋</span>
+    </button>
+    )}
+
 
       {/* Small copied message */}
       {copied && (

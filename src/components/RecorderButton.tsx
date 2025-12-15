@@ -6,7 +6,7 @@ type RecorderButtonProps = {
 
 export function RecorderButton({ isRecording, onToggle }: RecorderButtonProps) {
   return (
-    <button
+    <button className="recorder-button"
       onClick={onToggle}
       style={{
         padding: "12px 24px",
@@ -20,7 +20,7 @@ export function RecorderButton({ isRecording, onToggle }: RecorderButtonProps) {
         boxShadow: "0 4px 10px rgba(0,0,0,0.15)",
       }}
     >
-      {isRecording ? "Recording…" : "Press to Talk"}
+      {isRecording ? "Recording…" : "Press to Record"}
     </button>
   );
 }

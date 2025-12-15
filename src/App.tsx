@@ -20,9 +20,9 @@ function App() {
         padding: "24px",
       }}
     >
-      <h1>Wispr Flow Clone</h1>
-      <p style={{ color: "#555", marginBottom: "8px" }}>
-        Phase 3: Push-to-talk + real mic + Deepgram
+      <h1 style={{color: "#f2ecec"}}>Wispr Flow Clone </h1>
+      <p style={{ color: "#d7d4d4ff", marginBottom: "8px" }}>
+        Transcribe your voice into text in real time with Deepgram AI
       </p>
 
       {permissionError && (
@@ -31,7 +31,7 @@ function App() {
 
       <RecorderButton isRecording={isRecording} onToggle={toggleRecording} />
 
-      <p style={{ fontSize: "14px", color: "#777" }}>
+      <p style={{ fontSize: "14px", color: "#d7d4d4ff" }}>
         Recording state: <strong>{isRecording ? "ON" : "OFF"}</strong>
       </p>
 
