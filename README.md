@@ -2,8 +2,6 @@
 
 A functional desktop clone of [Wispr Flow](https://wisprflow.ai)'s push-to-talk voice transcription app. Records from your microphone and transcribes using Deepgram's API.
 
-[![Demo GIF](https://via.placeholder.com/800x400/4F46E5/FFFFFF?text=Wispr+Flow+Clone+Demo)](https://github.com/yourusername/wispr-flow-clone)
-
 ## ✨ Features
 
 - **Push-to-talk** recording with real-time visual feedback
