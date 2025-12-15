@@ -5,7 +5,7 @@ import { TranscriptionDisplay } from "./components/TranscriptionDisplay";
 import { useRecorder } from "./hooks/useRecorder";
 
 function App() {
-  const { isRecording, transcript, toggleRecording, permissionError  } = useRecorder();
+  const { isRecording, transcript, toggleRecording, permissionError, isTranscribing  } = useRecorder();
 
   return (
     <div
@@ -35,7 +35,21 @@ function App() {
         Recording state: <strong>{isRecording ? "ON" : "OFF"}</strong>
       </p>
 
-      <TranscriptionDisplay transcript={transcript} />
+      {isRecording && (
+        <div
+          style={{
+            marginTop: "4px",
+            width: "16px",
+            height: "16px",
+            borderRadius: "50%",
+            backgroundColor: "#e53935",
+            boxShadow: "0 0 0 0 rgba(229, 57, 53, 0.7)",
+            animation: "pulse 1.5s infinite",
+          }}
+        />
+      )}
+
+      <TranscriptionDisplay transcript={transcript} isTranscribing={isTranscribing} isRecording={isRecording}/>
     </div>
   );
 }

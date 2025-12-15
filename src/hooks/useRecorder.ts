@@ -6,6 +6,7 @@ import { transcribeWithDeepgram } from "../services/deepgram";
 export function useRecorder() {
   const [isRecording, setIsRecording] = useState(false);
   const [transcript, setTranscript] = useState("");
+  const [isTranscribing, setIsTranscribing] = useState(false);
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null);
   const chunksRef = useRef<BlobPart[]>([]);
@@ -57,8 +58,6 @@ export function useRecorder() {
 
     recorder.start();
     setIsRecording(true);
-    // Optionally clear previous transcript when starting new recording
-    // setTranscript("");
   }
 
   async function stopRecording() {
@@ -89,8 +88,14 @@ export function useRecorder() {
     setIsRecording(false);
 
     // Send real audio blob to Deepgram
-    const text = await transcribeWithDeepgram(audioBlob);
-    setTranscript(text);
+    setIsTranscribing(true);
+    setTranscript("");
+    try {
+      const text = await transcribeWithDeepgram(audioBlob);
+      setTranscript(text);
+    } finally {
+      setIsTranscribing(false);
+    }
   }
 
   async function toggleRecording() {
@@ -106,5 +111,6 @@ export function useRecorder() {
     transcript,
     toggleRecording,
     permissionError,
+    isTranscribing,
   };
 }
